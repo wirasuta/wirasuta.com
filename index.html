@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>Untitled</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+		<style>
+			* {
+				font-family: 'Source Code Pro', monospace;
+			}
+
+			#box {
+			    height: 100%;
+			    width: 100%;
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"><span id="typed"></span></div>
+		<script defer>
+			let typewriter = (el, text, hold, interval) => {
+				let counter = 0
+				let increasing = true
+
+				setInterval(() => {
+					el.innerText = text.slice(0, counter)
+
+					if (increasing) {
+						counter++
+					} else {
+						counter--
+					}
+
+					if (counter >= text.length + hold) {
+						increasing = false
+					} else if (counter == 0) {
+						increasing = true
+					}
+				}, interval)
+			}
+
+			const text = "> wirasuta.com"
+			const interval = 200
+			const hold = 10
+			let el = document.getElementById('typed')
+
+			typewriter(el, text, hold, interval)
+		</script>
+	</body>
+</html>
